@@ -1,10 +1,7 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:sqflite/sqflite.dart';
-import 'package:path/path.dart';
-import 'package:path_provider/path_provider.dart';
-import 'dart:async';
+import 'package:sqliteapp/DataBaseHelper.dart';
+
+import 'package:sqliteapp/grocery.dart';
 
 main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -89,26 +86,8 @@ class _SqliteAppState extends State<SqliteApp> {
   }
 }
 
-class Grocery{
-  // int? !=  null
-  final int? id;
-  final String name;
 
-  Grocery({ this.id, required this.name});
-
-  factory Grocery.fromMap(Map<String, dynamic> json) => new Grocery(
-    id: json['id'],
-    name: json['name'],
-  );
-
-  Map<String,dynamic> toMap(){
-    return{
-      'id':id,
-      'name': name,
-    };
-  }
-}
-
+/*
 class DataBaseHelper{
   DataBaseHelper._privateConstructor();
   static final DataBaseHelper instance = DataBaseHelper._privateConstructor();
@@ -133,7 +112,7 @@ class DataBaseHelper{
   Future _onCreate(Database db, int version) async{
     await db.execute('''
       CREATE TABLE groceries(
-        id INTEGER PRIMARY KEY;
+        id INTEGER PRIMARY KEY,
         name TEXT
       )
     ''');
@@ -165,4 +144,4 @@ class DataBaseHelper{
     Database db = await instance.database;
     return await db.update('groceries', grocery.toMap(), where: 'id = ?', whereArgs: [grocery.id]);
   }
-}
+}*/
